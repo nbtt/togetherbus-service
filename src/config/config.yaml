@@ -1,0 +1,6 @@
+db:
+  host: 'db'
+  port: 3306,
+  username: 'tobus_user'
+  password: 'ju2JyI9Zjx'
+  database: 'tobus_db'
