@@ -9,6 +9,7 @@ services:
     expose:
       - "3000"
     volumes:
+      - ./src/config/config.prod.yaml:/usr/src/app/dist/config/config/config.yaml
       - ~/tobus-data/public:/usr/src/app/public
       - ~/tobus-data/log:/usr/src/app/log
     depends_on:
