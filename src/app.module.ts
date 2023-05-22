@@ -10,6 +10,7 @@ import { join } from 'path';
 import { entities } from './entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { randomBytes } from 'crypto';
+import { RouteModule } from './route/route.module';
 
 @Module({
   imports: [
@@ -46,6 +47,7 @@ import { randomBytes } from 'crypto';
       rootPath: join(__dirname, '..', 'public'),
       serveRoot: '/public',
     }),
+    RouteModule,
   ],
   controllers: [AppController],
   providers: [AppService],
