@@ -9,11 +9,16 @@ export class RouteController {
 
     @Get('/')
     async getAll() {
-        return this.routeService.getAll({
+        const routes = await this.routeService.getAll({
             busNo: true,
             name: true,
             operatingTime: true,
             price: true,
-       }); 
+        });
+
+        return {
+            routes,
+            total: routes.length,
+        }
     }
 }
