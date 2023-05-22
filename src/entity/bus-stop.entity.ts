@@ -13,12 +13,16 @@ export class BusStop {
     code: string; // bus stop code, e.g. "BX 20"
 
     @Column({
-        type: 'float',
+        type: 'decimal',
+        precision: 8,
+        scale: 6,
     })
     lat: number; // lattitude of bus stop
 
     @Column({
-        type: 'float'
+        type: 'decimal',
+        precision: 9,
+        scale: 6,
     })
     lng: number; // longitude of bus stop
 
