@@ -17,14 +17,14 @@ export class BusStop {
         precision: 8,
         scale: 6,
     })
-    lat: number; // lattitude of bus stop
+    lat: string; // lattitude of bus stop
 
     @Column({
         type: 'decimal',
         precision: 9,
         scale: 6,
     })
-    lng: number; // longitude of bus stop
+    lng: string; // longitude of bus stop
 
     @Column()
     name: string; // name of bus stop, e.g. "Bến xe buýt Quận 8"
