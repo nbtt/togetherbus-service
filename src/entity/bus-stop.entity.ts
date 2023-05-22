@@ -32,16 +32,16 @@ export class BusStop {
     @Column()
     type: string; // bus stop type, e.g. "Trụ dừng"
     
-    @Column()
+    @Column({nullable: true})
     addressNo: string; // address number of bus stop, e.g. "Khu dân cư Opal Tower", "278"
 
-    @Column()
+    @Column({nullable: true})
     street: string; // street address of bus stop, e.g. "Phạm Văn Đồng"
 
-    @Column()
+    @Column({nullable: true})
     ward: string; // ward address of bus stop, e.g. "Phường Hiệp Bình Chánh"
 
-    @Column()
+    @Column({nullable: true})
     zone: string; // zone address of bus stop, e.g. "Quận Thủ Đức"
 
     @ManyToMany(
