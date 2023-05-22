@@ -21,7 +21,7 @@ import { randomBytes } from 'crypto';
       defaultMeta: { instance: randomBytes(4).toString('hex') },
       transports: [
         new winston.transports.Console(),
-        new winston.transports.File({ filename: join(__dirname, '..', 'log', 'info.log'), level: 'info' }),
+        new winston.transports.File({ filename: join(__dirname, '..', 'logs', 'info.log'), level: 'info' }),
       ],
     }),
     ConfigModule.forRoot({
