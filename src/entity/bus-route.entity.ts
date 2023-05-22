@@ -55,7 +55,7 @@ export class BusRoute {
         inverseJoinColumn: {
             name: 'stopId',
             referencedColumnName: 'id',
-        }
+        },
     })
     stops?: BusStop[];
 }
