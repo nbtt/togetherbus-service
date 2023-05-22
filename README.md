@@ -66,6 +66,12 @@ docker compose pull
 docker compose up -d --scale api=4
 ```
 
+After that, import the database:
+
+```sh
+docker exec -i $(docker compose ps -q db) mysql -u<your_mysql_username> -p<your_mysql_password> tobus_db < db/tobus_db.sql
+```
+
 ## License
 
 TogetherBus-Service is [MIT licensed](LICENSE).
