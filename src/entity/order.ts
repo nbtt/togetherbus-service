@@ -25,11 +25,11 @@ export class Order {
     items: OrderItem[];
 
     @Index()
-    @ManyToOne(
-        type => Account,
-        { createForeignKeyConstraints: false, }
-    )
-    account: Account;
+    @Column({
+        type: 'char',
+        length: 10,
+    })
+    accountPhone: string;
 
     // get amount before subtracting discount
     getOriginalAmount = () => {
