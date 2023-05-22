@@ -25,7 +25,10 @@ export class Order {
     items: OrderItem[];
 
     @Index()
-    @ManyToOne(type => Account)
+    @ManyToOne(
+        type => Account,
+        { createForeignKeyConstraints: false, }
+    )
     account: Account;
 
     // get amount before subtracting discount

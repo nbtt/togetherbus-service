@@ -17,11 +17,17 @@ export class OrderItem {
     @Column()
     amount: number;
 
-    @ManyToOne(type => BusRoute)
+    @ManyToOne(
+        type => BusRoute,
+        { createForeignKeyConstraints: false, }
+    )
     route: BusRoute;
 
     @Index()
-    @ManyToOne(type => Order)
+    @ManyToOne(
+        type => Order,
+        { createForeignKeyConstraints: false, }
+    )
     order: Order;
 
     // get amount before subtracting discount
