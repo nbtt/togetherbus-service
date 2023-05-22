@@ -19,6 +19,9 @@ export class BusTrip {
     })
     direction: BusDirection;
 
+    @PrimaryColumn()
+    order: number; // order of trip in the route
+
     @Column({
         type: 'char',
         length: 5,
