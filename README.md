@@ -41,7 +41,7 @@ docker push <your_image_name>
 - Create data folder in server: `mkdir ~/tobus-data`
 - Prepare settings:
   - Create new branch: `git checkout -b deploy-local`
-  - Edit `src/config/config.prod.yaml` and `docker-compose.yml` with new value for any password field.
+  - Edit `src/config/config.prod.yaml` and `docker-compose.yml` with new value for every password field.
   - In `docker-compose.yml`, replace this value: `./src/config/config.prod.yaml`, to new value `./config.prod.yaml`
   - Commit the edited files to save the settings.
 
