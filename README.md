@@ -29,7 +29,7 @@
 ## Installation
 
 ```bash
-$ yarn install --ignore-engines
+$ yarn install
 ```
 
 ## Running the app
