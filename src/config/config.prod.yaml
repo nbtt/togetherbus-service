@@ -2,5 +2,5 @@ db:
   host: 'db'
   port: 3306,
   username: 'tobus_user'
-  password: 'ju2JyI9Zjx'
+  password: '7oMn0ajkc3'
   database: 'tobus_db'

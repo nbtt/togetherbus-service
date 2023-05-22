@@ -9,7 +9,7 @@ services:
     expose:
       - "3000"
     volumes:
-      - ./src/config/config.prod.yaml:/usr/src/app/dist/config/config/config.yaml
+      - ./config.prod.yaml:/usr/src/app/dist/config/config/config.yaml
       - ~/tobus-data/public:/usr/src/app/public
       - ~/tobus-data/logs:/usr/src/app/logs
     depends_on:
@@ -23,9 +23,9 @@ services:
     environment:
       - MYSQL_ROOT_HOST=%
       - MYSQL_DATABASE=tobus_db
-      - MYSQL_ROOT_PASSWORD=rootaCXmOLgwhy
+      - MYSQL_ROOT_PASSWORD=rootsUDDqunyQ6
       - MYSQL_USER=tobus_user
-      - MYSQL_PASSWORD=ju2JyI9Zjx
+      - MYSQL_PASSWORD=7oMn0ajkc3
     ports:
       - "3307:3306"
     volumes:
