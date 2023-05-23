@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 8.0.32)
 # Database: tobus_db
-# Generation Time: 2023-05-23 01:11:55 +0000
+# Generation Time: 2023-05-23 14:51:11 +0000
 # ************************************************************
 
 
@@ -99,33 +99,18 @@ CREATE TABLE `bus_stop` (
 
 
 
-# Dump of table bus_timetable
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `bus_timetable`;
-
-CREATE TABLE `bus_timetable` (
-  `id` int NOT NULL,
-  `routeNo` char(6) NOT NULL,
-  `direction` enum('go','return') NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `IDX_75c4df93bf2885d45a57e93909` (`routeNo`,`direction`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-
-
 # Dump of table bus_trip
 # ------------------------------------------------------------
 
 DROP TABLE IF EXISTS `bus_trip`;
 
 CREATE TABLE `bus_trip` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `routeNo` char(6) NOT NULL,
+  `direction` enum('go','return') NOT NULL,
   `order` int NOT NULL,
   `startTime` char(5) NOT NULL,
   `endTime` char(5) NOT NULL,
-  `timetableId` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`routeNo`,`direction`,`order`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
