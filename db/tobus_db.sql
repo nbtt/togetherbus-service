@@ -85,7 +85,7 @@ DROP TABLE IF EXISTS `bus_stop`;
 
 CREATE TABLE `bus_stop` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `code` char(10) NOT NULL,
+  `code` char(22) NOT NULL,
   `lat` decimal(8,6) NOT NULL,
   `lng` decimal(9,6) NOT NULL,
   `name` varchar(255) NOT NULL,
