@@ -39,6 +39,8 @@ import { RouteModule } from './route/route.module';
         password: configService.get<string>('db.password'),
         database: configService.get<string>('db.database'),
         entities: entities,
+        supportBigNumbers: true,
+        bigNumberStrings: true,
         synchronize: true,
       }),
       inject: [ConfigService],

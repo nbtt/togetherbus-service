@@ -10,12 +10,16 @@ export class OrderItem {
     @Column()
     quantity: number;
 
-    @Column()
-    discount: number;
+    @Column({
+        type: 'bigint',
+    })
+    discount: string;
 
     // final amount
-    @Column()
-    amount: number;
+    @Column({
+        type: 'bigint',
+    })
+    amount: string;
 
     @ManyToOne(
         type => BusRoute,

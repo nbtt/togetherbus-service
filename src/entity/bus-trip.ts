@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BusTimetable } from "./bus-timetable";
 
 export enum BusDirection {
     GO = 'go',
@@ -7,20 +8,11 @@ export enum BusDirection {
 
 @Entity()
 export class BusTrip {
-    @PrimaryColumn({
-        type: 'char',
-        length: 6,
-    })
-    routeNo: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
-    @PrimaryColumn({
-        type: 'enum',
-        enum: BusDirection,
-    })
-    direction: BusDirection;
-
-    @PrimaryColumn()
-    order: number; // order of trip in the route
+    @Column()
+    order: number; // order of trip in the timetable
 
     @Column({
         type: 'char',
@@ -33,4 +25,13 @@ export class BusTrip {
         length: 5,
     })
     endTime: string; // end time of trip, e.g. "06:10"
+
+    @ManyToOne(
+        type => BusTimetable,
+        { 
+            onDelete: 'NO ACTION', onUpdate: 'NO ACTION',
+            createForeignKeyConstraints: false,
+        }
+    )
+    timetable?: BusTimetable;
 }
