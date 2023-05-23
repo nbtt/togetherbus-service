@@ -41,7 +41,7 @@ import { RouteModule } from './route/route.module';
         entities: entities,
         supportBigNumbers: true,
         bigNumberStrings: true,
-        synchronize: true,
+        synchronize: false,
       }),
       inject: [ConfigService],
     }),
