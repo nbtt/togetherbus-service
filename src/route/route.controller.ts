@@ -1,5 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { RouteService } from './route.service';
+import { BusStop } from 'src/entity/bus-stop.entity';
 
 @Controller('routes')
 export class RouteController {
@@ -25,9 +26,27 @@ export class RouteController {
     async getRouteByNo(@Param('busNo') busNo: string){
         return await this.routeService.getRouteByNo(busNo);
     }
-    // @Get(':busNo/stops')
-    // async getStopsByBusNo(@Param('busNo') busNo: string){
-    //     return await this.routeService.getStopsByBusNo(busNo);
-    // }
+    @Get(':busNo/stops')
+    async getStopsByBusNo(@Param('busNo') busNo: string){
+        const stops = this.routeService.getStopsByBusNo(busNo);
+        const makeReturn = (stop)=>{
+            var routeStop = stop['stop'];
+            routeStop['order'] = routeStop['order']; 
+            var address = [routeStop.addressNo, routeStop.street, routeStop.ward, routeStop.zone].
+                            filter((item) => item != "").join(", ");
+            return { 
+                'code': routeStop['code'],
+                'order': stop['order'],
+                'lat': routeStop['lat'],
+                'lng': routeStop['lng'],
+                'name': routeStop['name'],
+                'address': address}
+        };
+        // return null;
+        const gostop = (await stops[0]).map(makeReturn);
+        const returnstop = (await stops[1]).map(makeReturn);
+        
+        return {'goStops':[...gostop],'returnStops':[...returnstop]};
+    }
     
 }

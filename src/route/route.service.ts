@@ -1,14 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BusRoute } from 'src/entity/bus-route.entity';
-import { Logger } from '@nestjs/common';
 import { FindOptionsSelect, FindOptionsSelectByString, Repository } from 'typeorm';
-
+import { RouteStop } from 'src/entity/route-stop';
+import { BusDirection } from 'src/entity/bus-trip';
 @Injectable()
 export class RouteService {
     constructor(
         @InjectRepository(BusRoute)
         private readonly busRouteRepository: Repository<BusRoute>,
+        @InjectRepository(RouteStop)
+        private readonly routeStopRepository: Repository<RouteStop>,
     ) {}
 
     getAll(select: FindOptionsSelect<BusRoute> = {}) {
@@ -26,28 +28,18 @@ export class RouteService {
             }
         })
     }
-    // getStopsByBusNo(busNo: string) {
-    //     const stops = this.busRouteRepository.findOne({
-    //         where: {
-    //             "busNo":busNo,
-    //         },
-    //         relations: {
-    //             stops: true,
-    //         },
-    //     }).then(route => route.stops);
-
-    //     const length = stops.then(stops => stops.length);
-    //     for(var i in stops){
-    //         Logger.log(i);
-    //     }
-    //     // const makeAddress = (addressArray: Array<string>) => {
-    //     //     const addressArrayFiltered = addressArray.filter((item) => item != "-1");
-    //     //     const address = addressArrayFiltered.join(", ");
-    //     //     return address
-    //     // }
-    //     // for(let i = 0; i < length; i++) {
-    //     //     stops[i]['address'] = stops[i]['addressNo'] + stops[i]['street'];
-    //     // }
-    //     return stops;
-    // }
+    getStopsByBusNo(busNo: string) {
+        // let query = this.busRouteRepository.createQueryBuilder("bus_route").
+        var directions = [BusDirection.GO,BusDirection.RETURN];
+        const ret = directions.map((direction) =>this.routeStopRepository.find({
+            where: {
+                "routeNo":busNo,
+                "direction": direction,
+            },
+            relations:{
+                stop: true,
+            },
+        }));
+        return ret;
+    }
 }
