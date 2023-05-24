@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { RouteService } from './route.service';
 
 @Controller('routes')
@@ -21,4 +21,13 @@ export class RouteController {
             total: routes.length,
         }
     }
+    @Get(':busNo')
+    async getRouteByNo(@Param('busNo') busNo: string){
+        return await this.routeService.getRouteByNo(busNo);
+    }
+    // @Get(':busNo/stops')
+    // async getStopsByBusNo(@Param('busNo') busNo: string){
+    //     return await this.routeService.getStopsByBusNo(busNo);
+    // }
+    
 }
