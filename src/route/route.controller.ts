@@ -48,5 +48,15 @@ export class RouteController {
         
         return {'goStops':[...gostop],'returnStops':[...returnstop]};
     }
-    
+    @Get(':busNo/timetables')
+    async getTimetablesByBusNo(@Param('busNo') busNo: string){
+        const timetables = this.routeService.getTimetablesByBusNo(busNo);
+        timetables.map((direct) => direct.then((timetable)=>{
+            timetable.map((item)=>{
+                delete item.direction;
+                delete item.routeNo;
+            })
+        }));
+        return {"goTimetables": await timetables[0], "returnTimeTables": await timetables[1]};
+    }
 }

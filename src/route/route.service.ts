@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { BusRoute } from 'src/entity/bus-route.entity';
 import { FindOptionsSelect, FindOptionsSelectByString, Repository } from 'typeorm';
 import { RouteStop } from 'src/entity/route-stop';
-import { BusDirection } from 'src/entity/bus-trip';
+import { BusDirection, BusTrip } from 'src/entity/bus-trip';
 @Injectable()
 export class RouteService {
     constructor(
@@ -11,6 +11,8 @@ export class RouteService {
         private readonly busRouteRepository: Repository<BusRoute>,
         @InjectRepository(RouteStop)
         private readonly routeStopRepository: Repository<RouteStop>,
+        @InjectRepository(BusTrip)
+        private readonly busTripRepository: Repository<BusTrip>,
     ) {}
 
     getAll(select: FindOptionsSelect<BusRoute> = {}) {
@@ -30,7 +32,7 @@ export class RouteService {
     }
     getStopsByBusNo(busNo: string) {
         // let query = this.busRouteRepository.createQueryBuilder("bus_route").
-        var directions = [BusDirection.GO,BusDirection.RETURN];
+        const directions = [BusDirection.GO,BusDirection.RETURN];
         const ret = directions.map((direction) =>this.routeStopRepository.find({
             where: {
                 "routeNo":busNo,
@@ -39,6 +41,16 @@ export class RouteService {
             relations:{
                 stop: true,
             },
+        }));
+        return ret;
+    }
+    getTimetablesByBusNo(busNo: string) {
+        const directions = [BusDirection.GO,BusDirection.RETURN];
+        const ret = directions.map((direction) =>this.busTripRepository.find({
+            where: {
+                "routeNo":busNo,
+                "direction": direction,
+            }
         }));
         return ret;
     }
