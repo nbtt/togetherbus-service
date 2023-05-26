@@ -218,8 +218,8 @@ DROP TABLE IF EXISTS `route_stop`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `route_stop` (
   `routeNo` char(6) NOT NULL,
-  `direction` enum('go','return') NOT NULL,
   `stopId` int NOT NULL,
+  `direction` enum('go','return') NOT NULL,
   `order` int NOT NULL,
   PRIMARY KEY (`routeNo`,`direction`,`stopId`,`order`),
   KEY `IDX_fab4087257db8e11e5a327c55d` (`stopId`),
