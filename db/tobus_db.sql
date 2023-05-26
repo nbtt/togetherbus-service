@@ -221,7 +221,7 @@ CREATE TABLE `route_stop` (
   `stopId` int NOT NULL,
   `direction` enum('go','return') NOT NULL,
   `order` int NOT NULL,
-  PRIMARY KEY (`routeNo`,`direction`,`stopId`,`order`),
+  PRIMARY KEY (`routeNo`,`direction`,`order`,`stopId`),
   KEY `IDX_fab4087257db8e11e5a327c55d` (`stopId`),
   CONSTRAINT `FK_92a5bfd0ecff581fd680e8ab17c` FOREIGN KEY (`routeNo`) REFERENCES `bus_route` (`busNo`),
   CONSTRAINT `FK_fab4087257db8e11e5a327c55da` FOREIGN KEY (`stopId`) REFERENCES `bus_stop` (`id`)

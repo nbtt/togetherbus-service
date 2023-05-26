@@ -4,7 +4,7 @@ import { BusRoute } from "./bus-route.entity";
 import { BusStop } from "./bus-stop.entity";
 
 @Entity()
-@Index(['routeNo', 'direction', 'stopId', 'order'], { unique: true })
+@Index(['routeNo', 'direction', 'order', 'stopId'], { unique: true })
 export class RouteStop {
     @PrimaryColumn()
     routeNo: string;
