@@ -11,6 +11,7 @@ import { entities } from './entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { randomBytes } from 'crypto';
 import { RouteModule } from './route/route.module';
+import { OrderModule } from './order/order.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { RouteModule } from './route/route.module';
       serveRoot: '/public',
     }),
     RouteModule,
+    OrderModule,
   ],
   controllers: [AppController],
   providers: [AppService],

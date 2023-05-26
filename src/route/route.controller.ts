@@ -1,6 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { RouteService } from './route.service';
-import { BusStop } from 'src/entity/bus-stop.entity';
 
 @Controller('routes')
 export class RouteController {

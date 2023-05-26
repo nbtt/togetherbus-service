@@ -1,6 +1,7 @@
 import { Column, Entity, Index, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { Order } from "./order";
 import { BusRoute } from "./bus-route.entity";
+import { ItemDto } from "src/order/dto/item.dto";
 
 @Entity()
 export class OrderItem {
@@ -38,4 +39,5 @@ export class OrderItem {
     getOriginalAmount = () => {
         return this.amount + this.discount;
     }
+    
 }
