@@ -4,19 +4,19 @@ import { BusRoute } from "./bus-route.entity";
 import { BusStop } from "./bus-stop.entity";
 
 @Entity()
-@Index(['routeNo', 'stopId', 'direction', 'order'], { unique: true })
+@Index(['routeNo', 'direction', 'stopId', 'order'], { unique: true })
 export class RouteStop {
     @PrimaryColumn()
     routeNo: string;
-    
-    @PrimaryColumn()
-    stopId: number;
 
     @PrimaryColumn({
         type: 'enum',
         enum: BusDirection,
     })
     direction: BusDirection; // direction of stop in the route
+    
+    @PrimaryColumn()
+    stopId: number;
 
     @PrimaryColumn()
     order: number; // order of stop in the route
