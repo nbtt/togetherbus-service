@@ -27,7 +27,8 @@ CREATE TABLE `account` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`phone`)
+  PRIMARY KEY (`phone`),
+  UNIQUE KEY `IDX_41dfcb70af895ddf9a53094515` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

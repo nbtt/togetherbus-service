@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity, Index, PrimaryColumn } from "typeorm";
 
 @Entity()
 export class Account {
@@ -12,6 +12,7 @@ export class Account {
     name: string;
 
     @Column()
+    @Index({ unique: true })
     email: string;
 
     @Column()
