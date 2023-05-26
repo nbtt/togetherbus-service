@@ -4,3 +4,11 @@ db:
   username: 'tobus_user'
   password: '7oMn0ajkc3'
   database: 'tobus_db'
+
+jwt:
+  secret:
+    access: 'ss761ntWOW'
+    refresh: 'mr4iO2J0Kd'
+  exp_time:
+    access: '5m'
+    refresh: '60d'
