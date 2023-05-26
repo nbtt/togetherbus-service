@@ -11,16 +11,16 @@ export class BusTrip {
         type: 'char',
         length: 6,
     })
-    routeNo: string;
+    routeNo: string; // bus route number
 
     @PrimaryColumn({
         type: 'enum',
         enum: BusDirection,
     })
-    direction: BusDirection;
+    direction: BusDirection; // direction of bus route
 
     @PrimaryColumn()
-    order: number; // order of trip in the route
+    order: number; // order of trip in the timetable
 
     @Column({
         type: 'char',

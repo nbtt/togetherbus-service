@@ -11,12 +11,16 @@ export class Order {
     @Column({type: "timestamp"})
     created_time: Date;
 
-    @Column()
-    discount: number;
+    @Column({
+        type: 'bigint',
+    })
+    discount: string;
 
     // final amount
-    @Column()
-    amount: number;
+    @Column({
+        type: 'bigint',
+    })
+    amount: string;
 
     @OneToMany(
         type => OrderItem,

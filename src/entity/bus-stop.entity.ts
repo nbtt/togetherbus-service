@@ -8,7 +8,7 @@ export class BusStop {
 
     @Column({
         type: 'char',
-        length: '10',
+        length: '22',
     })
     code: string; // bus stop code, e.g. "BX 20"
 

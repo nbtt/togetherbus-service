@@ -15,14 +15,20 @@ export class BusRoute {
     })
     operatingTime: string; // operating time, e.g. "04:40 - 20:30"
 
-    @Column()
-    price: number; // standard ticket price, unit: thousand dong
+    @Column({
+        type: 'bigint',
+    })
+    price: string; // standard ticket price, unit: VND
 
-    @Column()
-    priceStudent: number; // ticket price for student, unit: thousand dong
+    @Column({
+        type: 'bigint',
+    })
+    priceStudent: string; // ticket price for student, unit: VND
 
-    @Column()
-    priceGroup: number; // price for group of 30 tickets, unit: thousand dong
+    @Column({
+        type: 'bigint',
+    })
+    priceGroup: string; // price for group of 30 tickets, unit: VND
 
     @Column()
     numTrips: number; // number of trips in a day
