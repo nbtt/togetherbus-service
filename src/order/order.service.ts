@@ -27,12 +27,12 @@ export class OrderService {
       }
     });
   }
-  async create(createOrderDto: CreateOrderDto) {
+  async create(accountId: string,createOrderDto: CreateOrderDto) {
     let newOrder = new Order();
     newOrder.created_time= new Date();
     newOrder.discount= '0';
     newOrder.amount =  '0';
-    newOrder.accountPhone = createOrderDto.accountId;
+    newOrder.accountPhone = accountId;
     try {
       const ins = await this.orderRepository.insert(newOrder);
       newOrder.id = ins.identifiers[0].id;

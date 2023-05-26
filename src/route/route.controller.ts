@@ -31,8 +31,8 @@ export class RouteController {
         const makeReturn = (stop)=>{
             var routeStop = stop['stop'];
             routeStop['order'] = routeStop['order']; 
-            var address = [routeStop.addressNo, routeStop.street, routeStop.ward, routeStop.zone].
-                            filter((item) => item != "").join(", ");
+            var address = [routeStop.addressNo, routeStop.street, routeStop.ward, routeStop.zone]
+                        .filter((item) => item != "").join(", ");
             return { 
                 'code': routeStop['code'],
                 'order': stop['order'],

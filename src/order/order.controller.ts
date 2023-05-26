@@ -12,19 +12,24 @@ export class OrderController {
     return {status: 'success'};
   }
 
-  @Post('/')
+  @ApiParam({
+    name:"accountId",
+    type:String,
+    example:"000000000"
+  })
+  @Post('/accounts/:accountId')
   @ApiCreatedResponse({
     description:"success creat order"
   })
-  async create(@Body() createOrderDto: CreateOrderDto) {
-    return this.orderService.create(createOrderDto);
+  async create(@Param('accountId') accountId: string,@Body() createOrderDto: CreateOrderDto) {
+    return this.orderService.create(accountId,createOrderDto);
   }
   @ApiParam({
-    name: 'accountId',
-    type: String
+    name:"accountId",
+    type:String
   })
-  @Get('/accounts/:accountId')
-  async findAll(@Param('accountId') accouteId) {
+  @Get('/accounts/:accoundId')
+  async findAll(@Body('accountId') accouteId: string) {
     return await this.orderService.findAll(accouteId);
   }
 }

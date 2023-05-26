@@ -2,13 +2,13 @@ import { MinLength, IsString, IsArray, ArrayMinSize, ValidateNested } from "clas
 import { ItemDto } from "./item.dto";
 import { ApiProperty } from "@nestjs/swagger";
 export class CreateOrderDto {
-    @ApiProperty({
-        description: "account Phone of user",
-        example: "000000000"  
-    })
-    @IsString()
-    @MinLength(1)
-    accountId: string;
+    // @ApiProperty({
+    //     description: "account Phone of user",
+    //     example: "000000000"  
+    // })
+    // @IsString()
+    // @MinLength(1)
+    // accountId: string;
     
     @ApiProperty({
             description: "items of this Order",
