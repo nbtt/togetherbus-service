@@ -13,13 +13,13 @@ export class AccountParamAuthGuard extends JwtAuthGuard implements CanActivate {
 
   matchRolesAccount(request: any, requestPhonePath: string) {
     const user = request.user;
-    const requestPhone = _.get(request, requestPhonePath).toString();
+    const requestPhone = _.get(request, requestPhonePath);
 
     // check request phone and user phone
     return requestPhone == user.sub;
   }
 
-  async canActivate(context: ExecutionContext, requestPhonePath = 'params.phone'): Promise<boolean> {
+  async canActivate(context: ExecutionContext, requestPhonePath = 'params.accountPhone'): Promise<boolean> {
     // execute parent
     const isAuthorizedRoles = await super.canActivate(context);
 
