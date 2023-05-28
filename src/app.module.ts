@@ -12,6 +12,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { randomBytes } from 'crypto';
 import { RouteModule } from './route/route.module';
 import { OrderModule } from './order/order.module';
+import { AccountModule } from './account/account.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -52,6 +54,8 @@ import { OrderModule } from './order/order.module';
     }),
     RouteModule,
     OrderModule,
+    AccountModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

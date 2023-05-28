@@ -27,7 +27,8 @@ CREATE TABLE `account` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  PRIMARY KEY (`phone`)
+  PRIMARY KEY (`phone`),
+  UNIQUE KEY `IDX_41dfcb70af895ddf9a53094515` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -48,9 +49,9 @@ DROP TABLE IF EXISTS `account_login`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account_login` (
-  `accountId` int NOT NULL,
+  `accountPhone` char(10) NOT NULL,
   `date` timestamp NOT NULL,
-  PRIMARY KEY (`accountId`)
+  PRIMARY KEY (`accountPhone`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

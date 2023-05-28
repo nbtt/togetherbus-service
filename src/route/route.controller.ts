@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { RouteService } from './route.service';
+import { JwtAuthGuard } from 'src/auth/jwt/jwt.guard';
 
 @Controller('routes')
 export class RouteController {
@@ -8,6 +9,7 @@ export class RouteController {
     ) {}
 
     @Get('/')
+    @UseGuards(JwtAuthGuard)
     async getAll() {
         const routes = await this.routeService.getAll({
             busNo: true,
@@ -22,10 +24,12 @@ export class RouteController {
         }
     }
     @Get(':busNo')
+    @UseGuards(JwtAuthGuard)
     async getRouteByNo(@Param('busNo') busNo: string){
         return await this.routeService.getRouteByNo(busNo);
     }
     @Get(':busNo/stops')
+    @UseGuards(JwtAuthGuard)
     async getStopsByBusNo(@Param('busNo') busNo: string){
         const stops = this.routeService.getStopsByBusNo(busNo);
         const makeReturn = (stop)=>{
@@ -48,6 +52,7 @@ export class RouteController {
         return {'goStops':[...gostop],'returnStops':[...returnstop]};
     }
     @Get(':busNo/timetables')
+    @UseGuards(JwtAuthGuard)
     async getTimetablesByBusNo(@Param('busNo') busNo: string){
         const timetables = this.routeService.getTimetablesByBusNo(busNo);
         timetables.map((direct) => direct.then((timetable)=>{
