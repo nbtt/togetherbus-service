@@ -11,7 +11,7 @@ export class OrderController {
     return {status: 'success'};
   }
 
-  @Post('/')
+  @Post('/creat')
   async create(@Body() createOrderDto: CreateOrderDto) {
     return this.orderService.create(createOrderDto);
   }
