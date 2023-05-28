@@ -16,8 +16,8 @@ export class OrderController {
     return this.orderService.create(createOrderDto);
   }
 
-  @Get('/accounts/:accountId')
-  async findAll(@Param('accountId') accouteId) {
-    return await this.orderService.findAll(accouteId);
+  @Get('/accounts/:accountPhone')
+  async findAll(@Param('accountPhone') accoutPhone) {
+    return await this.orderService.findAll(accoutPhone);
   }
 }

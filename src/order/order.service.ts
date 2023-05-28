@@ -32,7 +32,7 @@ export class OrderService {
     newOrder.created_time= new Date();
     newOrder.discount= '0';
     newOrder.amount =  '0';
-    newOrder.accountPhone = createOrderDto.accountId;
+    newOrder.accountPhone = createOrderDto.accountPhone;
     try {
       const ins = await this.orderRepository.insert(newOrder);
       newOrder.id = ins.identifiers[0].id;

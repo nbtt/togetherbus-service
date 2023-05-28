@@ -4,7 +4,7 @@ export class CreateOrderDto {
     
     @IsString()
     @MinLength(1)
-    accountId: string;
+    accountPhone: string;
     
     @IsArray()
     @ValidateNested({ each: true })
