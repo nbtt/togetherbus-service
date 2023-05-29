@@ -1,4 +1,4 @@
-import { IsEmail, IsString, Length, Matches } from "class-validator";
+import { IsEmail, IsString, Length, Matches, MinLength } from "class-validator";
 
 export class CreateAccountDTO {
     @Matches(/^0[0-9]{9}$/, {
@@ -12,6 +12,6 @@ export class CreateAccountDTO {
     @IsEmail()
     email: string;
 
-    @Length(8, 20)
+    @MinLength(1)
     password: string;
 }

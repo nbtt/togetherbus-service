@@ -28,15 +28,16 @@ export class AccountService {
         }).catch((e) => {
             isError = true;
             errrorMessage = e.message;
+            let failedInfo = e.message.match("'[^']*'")[0].slice(1, -1);
             if (e instanceof QueryFailedError && 
                 e.driverError.code == "ER_DUP_ENTRY" && 
-                e.message.match("'[^']*'")[0].slice(1, -1) == accountInfo.phone) {
+                (failedInfo == accountInfo.phone || failedInfo == accountInfo.email)) {
                 isDuplicatedAccount = true;
             }
         })
 
         if (isDuplicatedAccount) {
-            throw new HttpException("Username existed", HttpStatus.CONFLICT);
+            throw new HttpException("Phone or email existed", HttpStatus.CONFLICT);
         }
 
         if (isError) {
